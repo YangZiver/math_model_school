@@ -1,0 +1,54 @@
+% ============================================================
+%  第 6 章：模型检验（灵敏度分析、误差分析、鲁棒性检验）
+% ============================================================
+\section{模型检验}
+
+\subsection{灵敏度分析}
+
+（分析模型参数变化对结果的影响程度，识别敏感参数。）
+
+为检验模型对关键参数的敏感程度，对参数 $\alpha$ 在 $[\alpha_0 - 50\%, \alpha_0 + 50\%]$ 范围内以 5\% 步长进行扰动，观察模型输出的变化。结果如图 \ref{fig:sensitivity} 所示。
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.7\textwidth]{sensitivity.png}
+    \fbox{\parbox{0.6\textwidth}{\centering\vspace{2cm}（在此插入灵敏度分析图）\vspace{2cm}}}
+    \caption{参数 $\alpha$ 的灵敏度分析}
+    \label{fig:sensitivity}
+\end{figure}
+
+结果表明：当 $\alpha$ 在 $\pm 20\%$ 范围内波动时，模型输出的变化不超过 5\%，说明模型对参数 $\alpha$ 不敏感，结果具有较好的稳定性。
+
+\subsection{误差分析}
+
+（若模型有预测/拟合功能，对比预测值与真实值的误差。）
+
+采用均方根误差（RMSE）和平均绝对百分比误差（MAPE）作为评价指标：
+
+\begin{equation}
+    \text{RMSE} = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(\hat{y}_i - y_i)^2},\quad
+    \text{MAPE} = \frac{1}{n}\sum_{i=1}^{n}\left|\frac{\hat{y}_i - y_i}{y_i}\right| \times 100\%
+    \label{eq:rmse_mape}
+\end{equation}
+
+\begin{table}[H]
+    \centering
+    \caption{模型误差指标}
+    \label{tab:error}
+    \begin{tabular}{ccc}
+        \toprule
+        指标 & 数值 & 评价 \\
+        \midrule
+        RMSE  & 0.XXXX & 误差较小，模型精度良好 \\
+        MAPE  & X.XX\% & 预测偏差在可接受范围内 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{鲁棒性检验（可选）}
+
+（通过蒙特卡洛模拟、K折交叉验证、Bootstrap 等方法进一步验证模型稳定性。）
+
+\subsection{模型对比（可选）}
+
+（若有多个候选模型，从精确度、计算复杂度、可解释性等维度进行横向对比，说明所选模型的优势。）

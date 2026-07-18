@@ -1,0 +1,156 @@
+% ------------------------------------------------------------
+%  数学建模论文 LaTeX 模板（校赛）
+%  主文件：编译入口
+%  编译方式：xelatex 论文.tex （执行两次以生成目录和参考文献）
+% ------------------------------------------------------------
+\documentclass[12pt,a4paper]{ctexart}
+
+% ========== 页面布局 ==========
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% ========== 数学公式 ==========
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{bm}
+
+% ========== 图表 ==========
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[font=small,labelsep=quad]{caption}
+\usepackage{subcaption}
+
+% ========== 列表 ==========
+\usepackage{enumitem}
+\setlist{nosep,leftmargin=2em}
+
+% ========== 算法 ==========
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\SetKwInput{KwInput}{输入}
+\SetKwInput{KwOutput}{输出}
+\SetKwComment{Comment}{\# }{}
+
+% ========== 代码 ==========
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+    basicstyle=\small\ttfamily,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    tabsize=2,
+    columns=flexible,
+    extendedchars=true,
+}
+
+% ========== 超链接 & 书签 ==========
+\usepackage[hidelinks,bookmarks=true]{hyperref}
+\usepackage{url}
+
+% ========== 页眉页脚 ==========
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% ========== 其他 ==========
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\graphicspath{{./figures/}}
+
+% ========== 文档信息（修改为实际值）==========
+\newcommand{\teamNumber}{023}
+\newcommand{\teamMembers}{杨张福 \quad 刘亚微 \quad 胡欣怡}
+\newcommand{\paperTitle}{电信客户流失因素识别与挽留策略优化}
+
+\begin{document}
+
+% ========== 封面 ==========
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{center}
+    \vspace*{2cm}
+
+    {\heiti\zihao{2} \paperTitle}
+
+    \vspace{3cm}
+
+    {\songti\zihao{4}
+    队伍编号：\teamNumber
+
+    \vspace{0.5cm}
+
+    队员姓名：\teamMembers
+
+    \vspace{3cm}
+
+    \today
+    }
+
+    \vfill
+\end{center}
+\end{titlepage}
+
+% ========== 摘要 ==========
+\setcounter{page}{1}
+\pagestyle{fancy}
+
+\begin{center}
+    {\heiti\zihao{3} 摘\quad 要}
+\end{center}
+
+\vspace{1em}
+
+% ---- 在这里写摘要 ----
+\noindent {\heiti 问题背景：}（简要说明问题背景和要解决的问题）
+
+\noindent {\heiti 建模方法：}（说明用了哪些模型、算法）
+
+\noindent {\heiti 主要结果：}（列出关键数值结果）
+
+\noindent {\heiti 模型评价：}（模型的优点和验证结果）
+
+\vspace{1em}
+
+\noindent {\heiti 关键词：}关键词1；关键词2；关键词3；关键词4；关键词5
+
+\newpage
+
+% ========== 目录 ==========
+\tableofcontents
+\newpage
+
+% ========== 正文 ==========
+\input{1.引言}
+\input{2.总体分析}
+\input{3.模型假设}
+\input{4.符号说明}
+\input{5.模型的建立与求解}
+\input{6.模型检验}
+\input{7.模型评价}
+\input{8.模型改进推广}
+
+% ========== 参考文献 ==========
+\newpage
+\begin{center}
+    {\heiti\zihao{3} 参考文献}
+\end{center}
+\vspace{1em}
+% 使用 BibTeX 编译参考文献
+\bibliographystyle{gbt7714-numerical}
+\bibliography{ref}
+
+\end{document}
