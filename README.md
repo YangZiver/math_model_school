@@ -19,3 +19,5 @@ mamba activate math_model
 5. scipy 1.18.0
 6. statsmodels 0.14.6
 7. openpyxl 3.1.5
+8. shap 0.52.0
+9. xgboost 3.3.0

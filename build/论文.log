@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.2) (preloaded format=xelatex 2026.3.22)  18 JUL 2026 20:59
+This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.2) (preloaded format=xelatex 2026.3.22)  19 JUL 2026 11:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1213,36 +1213,71 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 1.
 
 (E:\software\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [2])
+))
 \tf@toc=\write4
 \openout4 = `论文.toc'.
 
- [3] (1.引言.tex) (2.总体分析.tex [4]) (3.模型假设.tex) (4.符号说明.tex [5]) (5.模型的建立与求解.tex 
-[6] [7]) (6.模型检验.tex
-[8]) (7.模型评价.tex [9]) (8.模型改进推广.tex) [10]
+ [2] (1.引言.tex [3]) (2.总体分析.tex
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "FangSong/BI" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "FangSong/B" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "FangSong/I" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'FangSong(0)' created for font 'FangSong'
+(fontspec)             with options [Script={CJK}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"FangSong/OT:script=hani;language=dflt;"
+
+[4]) (3.模型假设.tex) (4.符号说明.tex [5]) (5.模型的建立与求解.tex (5.1.数据处理与EDA.tex [6]
+File: figures/整体流失率.png Graphic file (type bmp)
+<figures/整体流失率.png>
+
+[7]
+File: figures/数值特征分布对比.png Graphic file (type bmp)
+<figures/数值特征分布对比.png>
+ [8]
+File: figures/分类特征流失率对比.png Graphic file (type bmp)
+<figures/分类特征流失率对比.png>
+ [9]
+File: figures/相关性热力图.png Graphic file (type bmp)
+<figures/相关性热力图.png>
+ [10] [11]) (5.2.分类模型的建立.tex) (5.3.可解释性分析.tex) (5.4.客户分层与策略.tex))
+(6.模型检验.tex [12]) (7.模型评价.tex) (8.模型改进推广.tex [13]) [14]
 (d:\Files\Projects\math_model_school\build\论文.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 14.
 
-) [11] (d:\Files\Projects\math_model_school\build\论文.aux)
+) [15] (d:\Files\Projects\math_model_school\build\论文.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2022/08/05>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `论文.out' has not changed.
-(rerunfilecheck)             Checksum: 07D352C33BB9DAEAAF9CE6ABFBDD8EF9;3905.
+(rerunfilecheck)             Checksum: 67C9DFBBE04E6F499E2EE09F84816B03;2488.
  ) 
 Here is how much of TeX's memory you used:
- 21828 strings out of 402983
- 442854 string characters out of 5453864
- 887865 words of memory out of 5000000
- 50224 multiletter control sequences out of 15000+600000
- 639873 words of font info for 113 fonts, out of 8000000 for 9000
+ 21960 strings out of 402983
+ 448375 string characters out of 5453864
+ 892395 words of memory out of 5000000
+ 50331 multiletter control sequences out of 15000+600000
+ 639905 words of font info for 117 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 93i,15n,111p,1220b,538s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,12n,111p,1220b,514s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on d:\Files\Projects\math_model_school\build\论文.pdf (12 pages).
+Output written on d:\Files\Projects\math_model_school\build\论文.pdf (16 pages).
