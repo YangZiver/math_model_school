@@ -1,0 +1,104 @@
+\section{附录3：AI 工具使用说明}
+
+\subsection*{使用的 AI 工具及用途}
+
+在本次建模全过程中，团队使用了以下 AI 工具辅助工作：
+
+\begin{table}[htbp]
+    \centering
+    \caption{AI 工具使用清单}
+    \label{tab:ai_usage}
+    \small
+    \begin{tabular}{clp{6cm}}
+        \toprule
+        序号 & 工具 & 主要用途 \\
+        \midrule
+        1 & DeepSeek-V4-Flash &
+        利用其 Agent 工具 OpenCode 辅助编写 Python 数据处理、
+        可视化代码及部分复杂图表对应的  LaTeX 代码 \\
+        2 & DeepSeek-V4-Pro &
+        查询数学建模相关的模型原理与算法知识，
+        辅助论文部分文字表达的润色优化 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection*{AI 产出内容及人工修改情况}
+
+\textbf{（一）Python 代码编写（DeepSeek-V4-Flash + OpenCode）}
+
+\begin{enumerate}[nosep]
+    \item \textbf{数据处理管线。}
+    AI 辅助生成了 pandas 数据清洗、缺失值处理、One-Hot 编码和
+    StandardScaler 标准化的基础代码框架。
+    团队在此基础上补充了缺失值追溯的业务逻辑（
+    发现 Tenure Months 为 0 时 Total Charges 为空，
+    属于新客户未消费的正常情况，因此填充为 0），
+    并调整了列剔除策略（剔除 CustomerID、Count、Country 等无信息列）。
+    \item \textbf{matplotlib 可视化代码。}
+    AI 辅助编写了柱状图、直方图、箱线图、热力图等基础绘图函数。
+    团队在此基础上统一了全篇图片的配色方案
+    （蓝 \#3B7DD8、红 \#D8413A、灰 \#6C7A89）、
+    字体大小和图片尺寸，将所有子图的标签从英文改为中文，
+    并去掉了右上边框以简化视觉元素，使其符合学术论文的排版要求。
+    \item \textbf{SHAP 分析代码。}
+    AI 提供了 SHAP 的 LinearExplainer 基本调用方法和
+    summary\_plot、dependence\_plot 的函数签名。
+    团队在此基础上调整了背景样本数量、图表布局和中文标签显示。
+\end{enumerate}
+
+\textbf{（二）模型与算法知识查询（DeepSeek-V4-Pro）}
+
+在建模过程中，团队通过 DeepSeek-V4-Pro 查询了以下知识内容，
+并在理解消化后用于论文写作：
+
+\begin{enumerate}[nosep]
+    \item 逻辑回归的 class\_weight='balanced' 参数对类别不平衡的
+    处理机制，以及 AUC/F1-score 在不平衡分类问题中的适用性；
+    \item 随机森林的 Bootstrap 采样与特征随机选择机制，
+    XGBoost 的梯度提升原理及其与随机森林的差异；
+    \item SHAP 的 Shapley 值理论及其 LinearExplainer
+    与 TreeExplainer 的适用场景区分。
+\end{enumerate}
+
+\textbf{（三）语言文字润色（WorkBuddy调用DeepSeek-V4-Pro）}
+
+本文部分段落的文字表达经过了 WorkBuddy 的润色优化，
+主要包括：
+\begin{enumerate}[nosep]
+    \item 调整了部分段落的句长和断句，使长句拆分后更易阅读；
+    \item 统一了全文中的术语表达（如"在网时长""月付合同"等）；
+    \item 优化了部分过渡句的措辞，使段落间的逻辑衔接更自然。
+\end{enumerate}
+所有润色建议均经团队成员逐句审阅，确认语义未发生偏移后采纳。
+
+\subsection*{AI 错误及纠正情况}
+
+在建模过程中，AI 工具产生了以下错误，团队发现后予以纠正：
+
+\begin{enumerate}
+    \item \textbf{类别不平衡处理建议不当。}
+    AI 建议对类别不平衡数据使用 SMOTE 过采样。
+    团队经分析发现，SMOTE 生成的合成样本在 SHAP 归因分析中会
+    产生虚假的特征贡献值，破坏可解释性分析的可靠性。
+    最终采用 \texttt{class\_weight='balanced'}
+    以修改损失权重的方式处理不平衡，
+    在不改变原始数据分布的前提下保证模型对流失客户的识别能力。
+
+    \item \textbf{分类变量编码策略错误。}
+    AI 建议对所有分类变量统一使用 Label 编码。
+    团队识别到多分类名义变量（如合同类型的月付、一年、两年）
+    的各取值之间不存在自然的数值序关系，
+    Label 编码会人为引入虚假的顺序信息。
+    最终改为：二分类变量用 Label 编码（0/1），
+    多分类名义变量用 One-Hot 编码并设置
+    \texttt{drop\_first=True} 以避免多重共线性。
+
+    \item \textbf{混淆矩阵配色存在无障碍问题。}
+    AI 初始生成的混淆矩阵采用红-绿色阶方案。
+    团队注意到该配色对红绿色盲读者不友好，
+    且红绿色在学术语境下可能暗示"好/坏"的价值判断，
+    对论文的客观性产生歧义。
+    最终改为单色阶（Blues），消除了色觉无障碍问题和视觉歧义。
+
+\end{enumerate}

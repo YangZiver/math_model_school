@@ -145,7 +145,7 @@ def plot_categorical_features():
 
         # 渐变色条
         from matplotlib.colors import to_rgb
-        base = to_rgb(GRAY)
+        base = to_rgb(BLUE)
         shades = [tuple(base[k] * (0.45 + 0.5 * j / max(n-1, 1))
                         + 1.0 * (0.55 - 0.5 * j / max(n-1, 1))
                         for k in range(3))

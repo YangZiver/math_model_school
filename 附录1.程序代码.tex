@@ -1,0 +1,61 @@
+\section{附录1：程序代码}
+
+本文所有程序代码环境为 Python 3.13 。代码文件清单如表\ref{tab:code_files}所示：
+
+\begin{table}[htbp]
+    \centering
+    \caption{程序文件清单}
+    \label{tab:code_files}
+    \small
+    \begin{tabular}{clp{7cm}}
+        \toprule
+        序号 & 文件名 & 用途 \\
+        \midrule
+        1 & \texttt{style\_config.py}   & 全局绘图风格与统一配色方案 \\
+        2 & \texttt{process.py}         & 数据清洗与探索性数据分析 \\
+        3 & \texttt{model.py}           & 特征工程、三模型训练、评估与交叉验证 \\
+        4 & \texttt{shap\_analysis.py}  & SHAP 归因分析与可视化 \\
+        5 & \texttt{retention.py}       & 客户风险分层与挽留策略 ROI 计算 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection*{全局风格配置}
+\lstinputlisting[
+    language=Python,
+    caption={style\_config.py —— 全局绘图风格与配色},
+    label=lst:style,
+    basicstyle=\scriptsize\ttfamily,
+]{code/style_config.py}
+
+\subsection*{探索性数据分析}
+\lstinputlisting[
+    language=Python,
+    caption={process.py —— 数据清洗与 EDA 可视化},
+    label=lst:process,
+    basicstyle=\scriptsize\ttfamily,
+]{code/process.py}
+
+\subsection*{逻辑回归建模与模型验证}
+\lstinputlisting[
+    language=Python,
+    caption={model.py —— 特征工程、三模型训练、交叉验证与阈值分析},
+    label=lst:model,
+    basicstyle=\scriptsize\ttfamily,
+]{code/model.py}
+
+\subsection*{SHAP 可解释性分析}
+\lstinputlisting[
+    language=Python,
+    caption={shap\_analysis.py —— SHAP 归因分析与可视化},
+    label=lst:shap,
+    basicstyle=\scriptsize\ttfamily,
+]{code/shap_analysis.py}
+
+\subsection*{客户风险分层与 ROI 计算}
+\lstinputlisting[
+    language=Python,
+    caption={retention.py —— 分位数分层与挽留策略 ROI 估算},
+    label=lst:retention,
+    basicstyle=\scriptsize\ttfamily,
+]{code/retention.py}

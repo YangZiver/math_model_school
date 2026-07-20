@@ -53,25 +53,29 @@ plt.rcParams.update({
 })
 
 # -----------------------------------------------------------
-#  统一配色方案（colorblind-friendly，偏冷稳重色调）
+#  统一配色方案 —— 全篇蓝主调 + 红强调 + 灰过渡
+#
+#  规则：蓝系（非流失/低风险/安全信号），
+#        红仅用于流失标记和高风险预警，
+#        灰用于中间地带和中立信息。
 # -----------------------------------------------------------
-BLUE   = "#3B7DD8"   # 未流失 / 低风险
-RED    = "#D8413A"   # 流失 / 高风险
-GREEN  = "#2E8B57"   # XGBoost
-GRAY   = "#6C7A89"   # 中风险
+BLUE      = "#3B7DD8"   # 主色调：未流失 / 低风险
+BLUE_DARK = "#1A5CAB"   # 深蓝：需要区分两种蓝时用
+RED       = "#D8413A"   # 强调色：流失 / 高风险
+GRAY      = "#6C7A89"   # 过渡色：中风险 / 次要元素
 
-# 三模型配色
-C_LR = RED              # 逻辑回归
-C_RF = BLUE             # 随机森林
-C_XGB = GREEN           # XGBoost
+# ---- 三模型配色（红-蓝-深蓝，统一色系）----
+C_LR  = RED              # 逻辑回归
+C_RF  = BLUE             # 随机森林
+C_XGB = BLUE_DARK        # XGBoost
 
-# 三风险层级配色
-C_HIGH  = RED           # 高风险
-C_MID   = GRAY          # 中风险
-C_LOW   = BLUE          # 低风险
+# ---- 三风险层级配色（红-灰-蓝）----
+C_HIGH = RED             # 高风险
+C_MID  = GRAY            # 中风险
+C_LOW  = BLUE            # 低风险
 
-# 两分类配色
-C_NOT_CHURN = BLUE
-C_CHURN     = RED
+# ---- 两分类配色 ----
+C_NOT_CHURN = BLUE       # 未流失
+C_CHURN     = RED        # 流失
 
 SAVE = True
