@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.2) (preloaded format=xelatex 2026.3.22)  19 JUL 2026 11:26
+This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.2) (preloaded format=xelatex 2026.3.22)  20 JUL 2026 08:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1217,7 +1217,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write4
 \openout4 = `论文.toc'.
 
- [2] (1.引言.tex [3]) (2.总体分析.tex
+ [2] [3] (1.引言.tex) (2.总体分析.tex [4]
 
 Package fontspec Info: 
 (fontspec)             Could not resolve font "FangSong/BI" (it probably
@@ -1244,40 +1244,71 @@ Package fontspec Info:
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"FangSong/OT:script=hani;language=dflt;"
 
-[4]) (3.模型假设.tex) (4.符号说明.tex [5]) (5.模型的建立与求解.tex (5.1.数据处理与EDA.tex [6]
+ [5]) (3.模型假设与符号说明.tex) (4.问题一：流失客户画像构建.tex [6] [7] [8]
 File: figures/整体流失率.png Graphic file (type bmp)
 <figures/整体流失率.png>
+ [9]
+Overfull \hbox (2.79727pt too wide) in paragraph at lines 93--97
+[]\TU/SimSun(0)/m/n/12 为 考 察 流 失 与 未 流 失 客 户 在 数 值 特 征 上 的 分 布 差 异，|  选 取 在 网 时
+ 长  |（\TU/lmr/m/n/12 Tenure Months\TU/SimSun(0)/m/n/12 ） 、|
+ []
 
-[7]
 File: figures/数值特征分布对比.png Graphic file (type bmp)
 <figures/数值特征分布对比.png>
- [8]
+[10]
 File: figures/分类特征流失率对比.png Graphic file (type bmp)
 <figures/分类特征流失率对比.png>
- [9]
+ [11]
 File: figures/相关性热力图.png Graphic file (type bmp)
 <figures/相关性热力图.png>
- [10] [11]) (5.2.分类模型的建立.tex) (5.3.可解释性分析.tex) (5.4.客户分层与策略.tex))
-(6.模型检验.tex [12]) (7.模型评价.tex) (8.模型改进推广.tex [13]) [14]
-(d:\Files\Projects\math_model_school\build\论文.bbl
+ [12] [13]) (5.问题二：流失预测模型与关键因子识别.tex [14] [15]
+File: figures/confusion_matrix.png Graphic file (type bmp)
+<figures/confusion_matrix.png>
+File: figures/feature_importance.png Graphic file (type bmp)
+<figures/feature_importance.png>
+ [16]
+File: figures/roc_compare.png Graphic file (type bmp)
+<figures/roc_compare.png>
+ [17]
+File: figures/shap_bar.png Graphic file (type bmp)
+<figures/shap_bar.png>
+ [18]
+File: figures/shap_Tenure_Months.png Graphic file (type bmp)
+<figures/shap_Tenure_Months.png>
+ [19]
+File: figures/shap_Dependents_Yes.png Graphic file (type bmp)
+<figures/shap_Dependents_Yes.png>
 
-LaTeX Warning: Empty `thebibliography' environment on input line 14.
+[20]) (6.问题三：客户分层与差异化挽留策略.tex [21]
+File: figures/risk_tiers.png Graphic file (type bmp)
+<figures/risk_tiers.png>
+ [22] [23]) (7.模型检验.tex [24]
+File: figures/threshold_analysis.png Graphic file (type bmp)
+<figures/threshold_analysis.png>
+ [25])
+(8.模型评价与推广.tex [26]
+Overfull \hbox (66.97464pt too wide) in paragraph at lines 20--27
+\TU/SimSun(0)/m/n/12 始，|  到 评 估 阶 段 弃 用 准 确 率 改 用 \TU/lmr/m/n/12 AUC \TU/SimSun
+(0)/m/n/12 和 \TU/lmr/m/n/12 F1-score\TU/SimSun(0)/m/n/12 ，|  再 到 训 练 阶 段 设 置 \T
+U/lmtt/m/n/12 class_weight='balanced'\TU/SimSun(0)/m/n/12 ，|
+ []
 
-) [15] (d:\Files\Projects\math_model_school\build\论文.aux)
+[27]) [28] (d:\Files\Projects\math_model_school\build\论文.bbl) [29]
+(d:\Files\Projects\math_model_school\build\论文.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2022/08/05>
  ***********
 Package rerunfilecheck Info: File `论文.out' has not changed.
-(rerunfilecheck)             Checksum: 67C9DFBBE04E6F499E2EE09F84816B03;2488.
+(rerunfilecheck)             Checksum: 98D554834BCE15CE993A00BF3104D7D0;3513.
  ) 
 Here is how much of TeX's memory you used:
- 21960 strings out of 402983
- 448375 string characters out of 5453864
- 892395 words of memory out of 5000000
- 50331 multiletter control sequences out of 15000+600000
- 639905 words of font info for 117 fonts, out of 8000000 for 9000
+ 22116 strings out of 402983
+ 456127 string characters out of 5453864
+ 898321 words of memory out of 5000000
+ 50486 multiletter control sequences out of 15000+600000
+ 639929 words of font info for 120 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 93i,12n,111p,1220b,514s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,13n,111p,1220b,520s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on d:\Files\Projects\math_model_school\build\论文.pdf (16 pages).
+Output written on d:\Files\Projects\math_model_school\build\论文.pdf (30 pages).

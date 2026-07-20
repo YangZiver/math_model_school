@@ -1,14 +1,28 @@
-\begin{thebibliography}{0}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{#1}
-\expandafter\ifx\csname urlstyle\endcsname\relax\else
-  \urlstyle{same}\fi
-\expandafter\ifx\csname href\endcsname\relax
-  \def\doi{\begingroup \urlstyle{same}\Url}
-  \def\cstr{\begingroup \urlstyle{same}\Url}
-\else
-  \def\doi#1{\href{https://doi.org/#1}{\nolinkurl{#1}}}
-  \def\cstr#1{\href{https://cstr.cn/#1}{\nolinkurl{#1}}}
-\fi
+\begin{thebibliography}{1}
+
+\bibitem{breiman2001random}
+Leo Breiman.
+\newblock Random forests.
+\newblock {\em Machine Learning}, 45(1):5--32, 2001.
+
+\bibitem{chen2016xgboost}
+Tianqi Chen and Carlos Guestrin.
+\newblock {XGBoost}: A scalable tree boosting system.
+\newblock In {\em Proceedings of the 22nd ACM SIGKDD}, pages 785--794, 2016.
+
+\bibitem{lundberg2017unified}
+Scott~M. Lundberg and Su-In Lee.
+\newblock A unified approach to interpreting model predictions.
+\newblock {\em Advances in Neural Information Processing Systems}, 30, 2017.
+
+\bibitem{reichheld1996zero}
+Frederick~F. Reichheld.
+\newblock Learning from customer defections.
+\newblock {\em Harvard Business Review}, 74(2):56--69, 1996.
+
+\bibitem{li2019statistical}
+李航.
+\newblock {\em 统计学习方法}.
+\newblock 清华大学出版社, 第2版 edition, 2019.
 
 \end{thebibliography}

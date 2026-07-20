@@ -1,0 +1,63 @@
+\section{模型假设与符号说明}
+
+\subsection{模型假设}
+
+为在可处理的框架内抓住问题的核心矛盾，本文作以下约定：
+
+\begin{enumerate}
+    \item \textbf{样本代表性。}所给 7043 条记录能代表该运营商的客户总体，
+    不存在系统性的抽样偏倚。
+    \item \textbf{客户独立应答。}不同客户的离网决策彼此独立，
+    排除同一家庭成员间的联动退订效应。
+    \item \textbf{特征充分性。}现有字段已覆盖客户流失的主要诱因，
+    未被记录的宏观因素（竞争环境、经济波动等）的残余影响较小。
+    \item \textbf{标注可靠。}Churn Value 字段如实记录了客户的留存/离网状态，
+    无误标或漏标。
+    \item \textbf{行为稳态。}考察期内客户的消费模式与服务使用强度
+    未发生剧烈变动，可近似视为平稳。
+\end{enumerate}
+
+\subsection{符号说明}
+
+本文使用的主要符号及其含义如表 \ref{tab:notation} 所示。
+
+\begin{table}[htbp]
+    \centering
+    \caption{主要符号说明}
+    \label{tab:notation}
+    \small
+    \begin{tabular}{ccl}
+        \toprule
+        {\heiti 符号} & {\heiti 单位} & {\heiti 含义} \\
+        \midrule
+        \multicolumn{3}{l}{\heiti\small （一）数据与特征} \\
+        $N$        & -- & 样本总数（7043） \\
+        $p$        & -- & 编码后特征维度（31） \\
+        $x_i$      & -- & 第 $i$ 个样本的特征向量 \\
+        $y_i$      & -- & 第 $i$ 个样本的流失标签（$0/1$） \\
+        $r$        & -- & Pearson 线性相关系数 \\
+        \addlinespace
+        \multicolumn{3}{l}{\heiti\small （二）逻辑回归模型} \\
+        $P$        & -- & 模型输出的流失概率 $\in (0,1)$ \\
+        $\hat{y}_i$ & -- & 第 $i$ 个样本的预测类别 \\
+        $\beta_0$  & -- & 截距项（偏置） \\
+        $\beta_j$  & -- & 第 $j$ 个特征的回归系数 \\
+        $\lambda$  & -- & $\ell_2$ 正则化强度 \\
+        \addlinespace
+        \multicolumn{3}{l}{\heiti\small （三）评估与验证} \\
+        AUC        & -- & ROC 曲线下面积 \\
+        F1         & -- & 精确率与召回率的调和均值 \\
+        $k$        & -- & 交叉验证折数 \\
+        \addlinespace
+        \multicolumn{3}{l}{\heiti\small （四）可解释性与分层} \\
+        $\phi_j$   & -- & 第 $j$ 个特征的 SHAP 值 \\
+        $P_{50}$   & -- & 预测概率的第 50 百分位数 \\
+        $P_{80}$   & -- & 预测概率的第 80 百分位数 \\
+        \addlinespace
+        \multicolumn{3}{l}{\heiti\small （五）策略评估} \\
+        CLTV       & -- & 客户生命周期价值（美元） \\
+        $R_{\text{reach}}$ & -- & 挽留方案的触达率 \\
+        $R_{\text{retain}}$ & -- & 触达客户的挽留成功率 \\
+        \bottomrule
+    \end{tabular}
+\end{table}

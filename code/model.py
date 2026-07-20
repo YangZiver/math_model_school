@@ -4,16 +4,7 @@ import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings("ignore")
 
-plt.rcParams.update({
-    "font.family": "sans-serif",
-    "font.sans-serif": ["Microsoft YaHei", "SimHei"],
-    "axes.unicode_minus": False,
-    "font.size": 12,
-    "savefig.dpi": 300,
-    "savefig.bbox": "tight",
-})
-
-SAVE = True
+from style_config import *
 
 # ============================================================
 #  1. 数据读入与清洗
@@ -155,14 +146,14 @@ plt.show()
 # ---- 7.2 ROC 曲线 ----
 fpr, tpr, thresholds = roc_curve(y_test, y_prob)
 fig, ax = plt.subplots(figsize=(6, 5))
-ax.plot(fpr, tpr, color="#DD8452", linewidth=2,
+ax.plot(fpr, tpr, color=C_CHURN, linewidth=2,
         label=f"逻辑回归 (AUC = {auc:.3f})")
 ax.plot([0, 1], [0, 1], "k--", linewidth=1, alpha=0.6)
 ax.set_xlabel("假正率 (FPR)", fontsize=11)
 ax.set_ylabel("真正率 (TPR)", fontsize=11)
 ax.set_title("ROC 曲线", fontsize=13, fontweight="bold")
-ax.legend(fontsize=10)
-ax.grid(alpha=0.3)
+ax.legend(fontsize=10, frameon=False)
+ax.grid(alpha=0.2, linewidth=0.5)
 if SAVE:
     plt.savefig("figures/roc_curve.png", dpi=300)
 plt.show()
@@ -187,7 +178,7 @@ for _, row in coef_df.head(15).iterrows():
 
 # ---- 8.1 特征重要性图（前 10） ----
 top10 = coef_df.head(10)
-colors = ["#DD8452" if v > 0 else "#4C72B0"
+colors = [C_CHURN if v > 0 else BLUE
           for v in top10["系数"]]
 fig, ax = plt.subplots(figsize=(6, 5))
 ax.barh(range(len(top10)), top10["系数"], color=colors, alpha=0.8)
@@ -224,21 +215,104 @@ print("对比模型评估")
 print(f"{'='*40}")
 print(f"随机森林 - Accuracy: {acc_rf:.4f}, AUC: {auc_rf:.4f}")
 
-# ---- 9.1 两模型 ROC 曲线对比 ----
+# ============================================================
+#  10. 对比模型：XGBoost
+# ============================================================
+
+from xgboost import XGBClassifier
+
+neg_pos_ratio = len(y_train[y_train == 0]) / len(y_train[y_train == 1])
+
+xgb = XGBClassifier(
+    scale_pos_weight=neg_pos_ratio,
+    n_estimators=100,
+    max_depth=5,
+    learning_rate=0.1,
+    random_state=42,
+    use_label_encoder=False,
+    eval_metric="logloss",
+)
+xgb.fit(X_train, y_train)
+
+y_prob_xgb = xgb.predict_proba(X_test)[:, 1]
+auc_xgb = roc_auc_score(y_test, y_prob_xgb)
+acc_xgb = accuracy_score(y_test, xgb.predict(X_test))
+
+print(f"\n{'='*40}")
+print("XGBoost 评估结果")
+print(f"{'='*40}")
+print(f"XGBoost  - Accuracy: {acc_xgb:.4f}, AUC: {auc_xgb:.4f}")
+
+# ---- 10.1 三模型 ROC 曲线对比 ----
 fpr_rf, tpr_rf, _ = roc_curve(y_test, y_prob_rf)
-fig, ax = plt.subplots(figsize=(6, 5))
-ax.plot(fpr, tpr, color="#DD8452", linewidth=2,
+fpr_xgb, tpr_xgb, _ = roc_curve(y_test, y_prob_xgb)
+
+fig, ax = plt.subplots(figsize=(7, 5.5))
+ax.plot(fpr, tpr, color=C_LR, linewidth=2,
         label=f"逻辑回归 (AUC = {auc:.3f})")
-ax.plot(fpr_rf, tpr_rf, color="#4C72B0", linewidth=2,
+ax.plot(fpr_rf, tpr_rf, color=C_RF, linewidth=2,
         label=f"随机森林 (AUC = {auc_rf:.3f})")
+ax.plot(fpr_xgb, tpr_xgb, color=C_XGB, linewidth=2,
+        label=f"XGBoost (AUC = {auc_xgb:.3f})")
 ax.plot([0, 1], [0, 1], "k--", linewidth=1, alpha=0.6)
 ax.set_xlabel("假正率 (FPR)", fontsize=11)
 ax.set_ylabel("真正率 (TPR)", fontsize=11)
-ax.set_title("模型 ROC 曲线对比", fontsize=13, fontweight="bold")
-ax.legend(fontsize=10)
+ax.set_title("三模型 ROC 曲线对比", fontsize=13, fontweight="bold")
+ax.legend(fontsize=10, loc="lower right")
 ax.grid(alpha=0.3)
 if SAVE:
     plt.savefig("figures/roc_compare.png", dpi=300)
 plt.show()
 
 print("\n所有模型图片已保存至 figures/ 文件夹")
+
+# ============================================================
+#  11. 逻辑回归模型验证
+# ============================================================
+
+from sklearn.model_selection import cross_val_score
+from sklearn.metrics import recall_score, precision_score
+
+# ---- 11.1 5 折交叉验证 ----
+cv_scores = cross_val_score(
+    lr, X_encoded, y, cv=5, scoring="roc_auc",
+)
+print(f"\n{'='*40}")
+print("5 折交叉验证结果")
+print(f"{'='*40}")
+for i, s in enumerate(cv_scores):
+    print(f"  第 {i+1} 折 AUC: {s:.4f}")
+print(f"  均值: {cv_scores.mean():.4f}")
+print(f"  标准差: {cv_scores.std():.4f}")
+
+# ---- 11.2 阈值敏感性分析 ----
+print(f"\n{'='*40}")
+print("阈值敏感性分析")
+print(f"{'='*40}")
+
+thresholds = np.arange(0.1, 0.85, 0.05)
+recalls = []
+precisions = []
+
+for t in thresholds:
+    y_pred_t = (y_prob >= t).astype(int)
+    rec = recall_score(y_test, y_pred_t)
+    prec = precision_score(y_test, y_pred_t)
+    recalls.append(rec)
+    precisions.append(prec)
+    print(f"  阈值={t:.2f}  Recall={rec:.3f}  Precision={prec:.3f}")
+
+fig, ax1 = plt.subplots(figsize=(6, 4.5))
+ax1.plot(thresholds, recalls, "o-", color=C_CHURN, linewidth=2,
+         label="召回率 (Recall)")
+ax1.plot(thresholds, precisions, "s-", color=BLUE, linewidth=2,
+         label="精确率 (Precision)")
+ax1.axvline(0.5, color="gray", linestyle="--", alpha=0.5)
+ax1.set_xlabel("判别阈值", fontsize=11)
+ax1.set_ylabel("指标值", fontsize=11)
+ax1.set_title("阈值敏感性分析", fontsize=13, fontweight="bold")
+ax1.legend(fontsize=10)
+ax1.grid(alpha=0.3)
+if SAVE:
+    plt.savefig("figures/threshold_analysis.png", dpi=300)
+plt.show()
