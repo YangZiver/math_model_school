@@ -97,7 +97,6 @@
 
     \vspace{3cm}
 
-    \today
     }
 
     \vfill
@@ -113,15 +112,13 @@
 \end{center}
 
 \vspace{1em}
-
-% ---- 在这里写摘要 ----
 \textbf{问题背景：}客户流失是一个困扰电信运营商的难题，而获取新客户的成本远高于留住老客户。
 本文基于一份真实的历史客户数据，进行了\textbf{探索性数据分析}，建立了\textbf{逻辑回归}、\textbf{随机森林}和
 \textbf{XGBoost}三大模型系统研究了客户流失的关键因素并选出了最优模型对客户进行分层和制定差异化挽留策略。
 
 \textbf{针对问题一，}首先利用 pandas 对数据进行了清洗，剔除了CustomerID、Count、Country 三列与客户流失无关的数据，
 将 Total Charges 由字符串类型转换为浮点类型便于计算，并按照新客户未产生消费的业务逻辑将产生的11条缺失值填充为0。
-接着以 Churn Value 为依据统计了\textbf{整体的客户流失率}，然后选取了 Tenture Months、Monthly Charges 和 Total Charges
+接着以 Churn Value 为依据统计了\textbf{整体的客户流失率}，然后选取了 Tenure Months、Monthly Charges 和 Total Charges
 三个与业务直接相关的特征数据进行了直方图和箱线图可视化分析，观察了各特征数据不同取值变量的流失风险差异，得出在网时长是区分流失与
 未流失最有效的数值特征。再选取了$8$个分类特征，分别统计流失率并绘制柱状图，发现\textbf{合同类型}、\textbf{互联网服务类型}和\textbf{支付方式}
 是与客户流失关联较强的$3$个特征。其次，采用 Pearson 相关系数衡量各个数值特征与流失目标的线性关联强度，并以
@@ -153,7 +150,7 @@
 \newpage
 
 % ========== 目录 ==========
-\tableofcontents
+% \tableofcontents
 \newpage
 
 % ========== 正文 ==========
