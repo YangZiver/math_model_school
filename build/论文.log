@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.2) (preloaded format=xelatex 2026.3.22)  21 JUL 2026 16:24
+This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.2) (preloaded format=xelatex 2026.3.22)  21 JUL 2026 16:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1021,7 +1021,8 @@ Package tocloft Info: The document has section divisions on input line 51.
 \cftbeforetabskip=\skip134
 \cfttabindent=\skip135
 \cfttabnumwidth=\skip136
-) (论文.aux)
+)
+(d:\Files\Projects\math_model_school\build\论文.aux)
 \openout1 = `论文.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
@@ -1142,7 +1143,8 @@ Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count374
 Package hyperref Info: Link coloring OFF on input line 79.
-(论文.out) (论文.out)
+(d:\Files\Projects\math_model_school\build\论文.out)
+(d:\Files\Projects\math_model_school\build\论文.out)
 \@outlinefile=\write3
 \openout3 = `论文.out'.
 
@@ -1203,7 +1205,8 @@ Package fontspec Info:
 ]
 LaTeX Font Info:    Trying to load font information for U+msa on input line 123
 .
- (E:\software\MiKTeX\tex/latex/amsfonts\umsa.fd
+
+(E:\software\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 123
@@ -1284,7 +1287,8 @@ File: figures/risk_tiers.png Graphic file (type bmp)
 File: figures/threshold_analysis.png Graphic file (type bmp)
 <figures/threshold_analysis.png>
  [23])
-(8.模型评价与推广.tex [24] [25]) [26] (论文.bbl) (附录1.程序代码.tex
+(8.模型评价与推广.tex [24] [25]) [26]
+(d:\Files\Projects\math_model_school\build\论文.bbl) (附录1.程序代码.tex
 (E:\software\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
 )
@@ -1296,7 +1300,8 @@ odel.py [33] [34] [35]
 [42] [43]
 Missing character: There is no ≤ in font [lmmono8-regular]:!
 Missing character: There is no ≤ in font [lmmono8-regular]:!
-[44])) (附录2.创新点说明.tex [45]) (附录3.AI工具使用说明.tex [46]) [47] (论文.aux)
+[44])) (附录2.创新点说明.tex [45]) (附录3.AI工具使用说明.tex [46]) [47]
+(d:\Files\Projects\math_model_school\build\论文.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2022/08/05>
@@ -1306,7 +1311,7 @@ Package rerunfilecheck Info: File `论文.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  22770 strings out of 402983
- 468103 string characters out of 5453864
+ 468313 string characters out of 5453864
  1466666 words of memory out of 5000000
  51104 multiletter control sequences out of 15000+600000
  639953 words of font info for 123 fonts, out of 8000000 for 9000
